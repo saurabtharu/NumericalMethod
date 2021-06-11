@@ -2,6 +2,7 @@
 #include<math.h>
 #define PI 3.14159
 
+
 float error(float Xnew, float Xold){
     float e = (Xnew - Xold)/(Xnew);
     if (e < 0)
@@ -10,7 +11,6 @@ float error(float Xnew, float Xold){
     }
     return e;
 }
-
 
 float midValue(float Xu, float Xl){
     return (Xu + Xl) / 2;
@@ -38,7 +38,7 @@ float tangent(float value){
 }
 
 
-float Trigonometry(float degreeValue, float (*logic)(float)){
+float Trigonometry(float degreeValue, float (*logic)(float)){                //  Trigonometry function with call back function as parameter
     float radianValue = degreeValue * (PI/180);
     float value =  (*logic)(radianValue);
     return value;
@@ -103,6 +103,19 @@ int main(){
     float Xu, Xl ;                              // Xu for positive and Xl for negative
     intializeValue(&Xu, &Xl);
 
+    /**
+     * For Exponential and logarithmic linear equation 
+     * we need to intilize the value manually 
+     * ***/
+    
+    // for Exponentaial function
+    // Xu = -2;
+    // Xl = 0;
+
+    //for  logarithmic function
+    // Xu = 1;
+    // Xl = 0.8;
+
     float mid,e;
     int n;
 
@@ -129,9 +142,9 @@ int main(){
     printf("How many iterations? ");
     scanf("%d", &n);
 
-        printf("\n ___________________________________________________________________________________________________________________________\n");
-        printf("    Iteration |     Xu     |     f(Xu)    |     Xl      |       f(Xl)        |      Xm     |    f(Xm)    |     Error       ");
-        printf("\n _____________|____________|______________|_____________|____________________|_____________|_____________|__________________\n");
+    printf("\n ___________________________________________________________________________________________________________________________\n");
+    printf("    Iteration |     Xu     |     f(Xu)    |     Xl      |       f(Xl)        |      Xm     |    f(Xm)    |     Error       ");
+    printf("\n _____________|____________|______________|_____________|____________________|_____________|_____________|__________________\n");
     
     // real calculation and the iteration begins here
     for (int i = 1; i <= n; i++)
@@ -153,14 +166,19 @@ int main(){
         else{
             Xu = mid;
         }
-    }
-        printf("\n\n[-] Thus, the root of  2x^3 - 5 = 0 is  %.4f and the error is %.4f.\n\n", mid,e);
 
-        // printf("\n\n[-] Thus, the root of  sin(x) + 5x -3 = 0 is  %.4f .\n\n", mid);
+        if (e < 0.005)
+        {
+            break;
+        }    
+    }
+    printf("\n\n[-] Thus, the root of  2x^3 - 5 = 0 is  %.4f and the error is %.4f.\n\n", mid,e);
+
+    printf("\n\n[-] Thus, the root of  sin(x) + 5x -3 = 0 is  %.4f .\n\n", mid);
         
-        // printf("\n\n[-] Thus, the root of  cos(x)+5x^2-3x-5 = 0 is  %.4f .\n\n", mid);
+    printf("\n\n[-] Thus, the root of  cos(x)+5x^2-3x-5 = 0 is  %.4f .\n\n", mid);
         
-        // printf("\n\n[-] Thus, the root of  e^-x -5 = 0 is  %.4f .\n\n", mid);
+    printf("\n\n[-] Thus, the root of  e^-x -5 = 0 is  %.4f .\n\n", mid);
         
-        // printf("\n\n[-] Thus, the root of  ln(x)+6x-5 = 0 is  %.4f .\n\n", mid);
+    printf("\n\n[-] Thus, the root of  ln(x)+6x-5 = 0 is  %.4f .\n\n", mid);
 }
