@@ -174,11 +174,11 @@ int main(){
     }
     printf("\n\n[-] Thus, the root of  2x^3 - 5 = 0 is  %.4f and the error is %.4f.\n\n", mid,e);
 
-    printf("\n\n[-] Thus, the root of  sin(x) + 5x -3 = 0 is  %.4f .\n\n", mid);
+//    printf("\n\n[-] Thus, the root of  sin(x) + 5x -3 = 0 is  %.4f .\n\n", mid);
         
-    printf("\n\n[-] Thus, the root of  cos(x)+5x^2-3x-5 = 0 is  %.4f .\n\n", mid);
+//    printf("\n\n[-] Thus, the root of  cos(x)+5x^2-3x-5 = 0 is  %.4f .\n\n", mid);
         
-    printf("\n\n[-] Thus, the root of  e^-x -5 = 0 is  %.4f .\n\n", mid);
+//    printf("\n\n[-] Thus, the root of  e^-x -5 = 0 is  %.4f .\n\n", mid);
         
-    printf("\n\n[-] Thus, the root of  ln(x)+6x-5 = 0 is  %.4f .\n\n", mid);
+//    printf("\n\n[-] Thus, the root of  ln(x)+6x-5 = 0 is  %.4f .\n\n", mid);
 }
