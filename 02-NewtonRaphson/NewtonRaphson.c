@@ -1,11 +1,12 @@
 #include<stdio.h>
 #include<math.h>
+#include<stdlib.h>
 
 void choiceMenu(int *choice){
 
     printf("Which question??:\n\
     [1] 2 * x^3 - 5\n\
-    [2] cos(x) + 5 * x * x - 3 * x - 5\n\
+    [2] cos(x) + 5 * x^2 - 3 * x - 5\n\
     [3] sin(x) + 5 * x - 3\n\
     [4] ln(x) + 6 * x - 5\n\
     [5] e^-x - 5\n");
@@ -54,7 +55,7 @@ float cosineFunction(float x){
 }
 
 float cosineFunctionDerivative(float x){
-    return -sin(x) + 5 * x - 3;
+    return -sin(x) + 10 * x - 3;
 }
 
 //===============================| ln(x) + 6 * x - 5 |===============================================
@@ -86,9 +87,9 @@ float  (* function(int choice))(float)
     if (choice  == 1)
         return &polynomialEqn;
     else if(choice == 2)
-        return &sineFunction;
-    else if (choice == 3)
         return &cosineFunction;
+    else if (choice == 3)
+        return &sineFunction;
     else if(choice==4)
         return &logarithmicEqn;
     else
@@ -102,14 +103,17 @@ float (* functionDerivative(int choice))(float)
     if (choice  == 1)
         return &polynomialEqnDerivative;
     else if(choice == 2)
-        return &sineFunctionDerivative;
-    else if (choice == 3)
         return &cosineFunctionDerivative;
+    else if (choice == 3)
+        return &sineFunctionDerivative;
     else if(choice==4)
         return &logarithmicEqnDerivative;
-    else
+    else if(choice == 5)
         return &expoEqnDerivative;
-
+    else{
+        printf("Wrong input!!!\n");
+        exit(0);
+    }
 }
 
 int main(){
@@ -129,9 +133,9 @@ int main(){
     printf("\nNewton Raphson Method\n");
     printf("=======================\n\n");
 
-    int n;
-    printf("How many iterations? ");
-    scanf("%d", &n);
+    // int n;
+    // printf("How many iterations? ");
+    // scanf("%d", &n);
 
     printf("Enter the Initial value of x: ");
     scanf("%f", &X);
@@ -142,14 +146,15 @@ int main(){
 
     // real calculation and the iteration begins here
 
-    for (int i = 1; i <= n; i++)
+    for (int i = 1; i <= 20; i++)
     {
 
         float fx = (*funcVlaue)(X);
         float dfx = (*derivativeValue)(X);
         
         Xn = X - fx / dfx;
-        Xnew = Xn;
+        Xnew = X;
+        Xold = Xn;
         e = error(Xnew, Xold);
 
         printf("        %d       |  %.4f   |    %.4f    |   %.4f      |     %.4f    |   %.4f   \n", i, X, fx, dfx, Xn, e);
