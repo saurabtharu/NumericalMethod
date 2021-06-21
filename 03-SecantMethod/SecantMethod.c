@@ -16,7 +16,7 @@ void choiceMenu(int *choice){
 }
 
 float error(float Xnew, float Xold){
-    float e = (Xnew - Xold)/(Xnew);
+    float e = (Xold - Xnew)/(Xnew);
     if (e < 0)
     {
         return -e;
@@ -97,25 +97,6 @@ float  (* function(int choice))(float)
 
 }
 
-float (* functionDerivative(int choice))(float)
-{
-    
-    if (choice  == 1)
-        return &polynomialEqnDerivative;
-    else if(choice == 2)
-        return &cosineFunctionDerivative;
-    else if (choice == 3)
-        return &sineFunctionDerivative;
-    else if(choice==4)
-        return &logarithmicEqnDerivative;
-    else if(choice == 5)
-        return &expoEqnDerivative;
-    else{
-        printf("Wrong input!!!\n");
-        exit(0);
-    }
-}
-
 void printEqn(int choice){
 
     if (choice  == 1)
@@ -134,7 +115,7 @@ void printEqn(int choice){
         printf("The Equation is: e^-x - 5\n\n");
 
     else{
-        printf("Wrong input!!!\n\n");
+        printf("Wrong input!!!\n");
         exit(0);
     }
 }
@@ -146,14 +127,12 @@ int main(){
     choiceMenu(&choice);
 
     float (*funcVlaue)(float) = function(choice);
-    float (*derivativeValue)(float) = functionDerivative(choice);
 
     float Xold = 0, Xnew;
-    float X;
-    float Xn; // Xn is assumed to be X(n+1)
+    float XnMinus1, Xn, XnPlus1;
     float e;
 
-    printf("\nNewton Raphson Method\n");
+    printf("\nSecant Method\n");
     printf("=======================\n\n");
 
     // int n;
@@ -162,30 +141,37 @@ int main(){
 
     printEqn(choice);
     
-    printf("Enter the Initial value of x: ");
-    scanf("%f", &X);
+    printf("Enter the Initial value of Xn: ");
+    scanf("%f", &XnMinus1);
 
-    printf("\n ________________________________________________________________________________________\n");
-    printf("    Iteration   |     Xn    |     f(Xu)     |       df(x)   |   X(n+1)      |     error   ");
-    printf("\n _______________|___________|_______________|_______________|_______________|____________\n");
+    printf("Enter the Initial value of Xn+1: ");
+    scanf("%f", &Xn);
+
+    printf("\n ______________________________________________________________________________________________________\n");
+    printf("    Iteration   |     Xn-1  |     f(Xn-1)   |      Xn       |   f(Xn)      |   Xn+1      |     error   ");
+    printf("\n _______________|___________|_______________|_______________|______________|_____________|_____________\n");
 
     // real calculation and the iteration begins here
 
     for (int i = 1; i <= 20; i++)
     {
 
-        float fx = (*funcVlaue)(X);
-        float dfx = (*derivativeValue)(X);
-        
-        Xn = X - fx / dfx;
-        Xnew = X;
+        float fXnMinus1 = (*funcVlaue)(XnMinus1);
+        float fXn = (*funcVlaue)(Xn);
+
+        XnPlus1 = Xn - (Xn - XnMinus1) * fXn / (fXn - fXnMinus1);
+
+        float fXnPlus1 = (*funcVlaue)(XnPlus1);
+
         Xold = Xn;
+        Xnew = XnPlus1;
         e = error(Xnew, Xold);
 
-        printf("        %d       |  %.4f   |    %.4f    |   %.4f      |     %.4f    |   %.4f   \n", i, X, fx, dfx, Xn, e);
-        printf(" _______________|___________|_______________|_______________|_______________|_____________\n");
-        X = Xn;
-        Xold = Xn;
+        printf("        %d       |  %.4f   |    %.4f    |   %.4f      |   %.4f    |   %.4f    |   %.4f   \n", i, XnMinus1, fXnMinus1, Xn, fXn, XnPlus1, e);
+        printf(" _______________|___________|_______________|_______________|______________|_____________|_____________\n");
+        
+        XnMinus1 = Xn;
+        Xn = XnPlus1;
 
         if (e < 0.05)
         {
@@ -193,6 +179,6 @@ int main(){
         }
     }
 
-    printf("\n\n[-] Thus, the root is  %.4f and the error is %.4f.\n\n", Xn,e);
+    printf("\n\n[-] Thus, the root is  %.4f and the error is %.4f.\n\n", XnPlus1,e);
 
 }
