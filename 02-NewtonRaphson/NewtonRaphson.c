@@ -187,7 +187,7 @@ int main(){
         X = Xn;
         Xold = Xn;
 
-        if (e < 0.05)
+        if (e < 0.005)
         {
             break;
         }

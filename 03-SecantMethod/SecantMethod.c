@@ -173,7 +173,7 @@ int main(){
         XnMinus1 = Xn;
         Xn = XnPlus1;
 
-        if (e < 0.05)
+        if (e < 0.005)
         {
             break;
         }
