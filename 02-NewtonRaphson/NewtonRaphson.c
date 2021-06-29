@@ -145,7 +145,7 @@ int main(){
 
     choiceMenu(&choice);
 
-    float (*funcVlaue)(float) = function(choice);
+    float (*funcValue)(float) = function(choice);
     float (*derivativeValue)(float) = functionDerivative(choice);
 
     float Xold = 0, Xnew;
@@ -174,7 +174,7 @@ int main(){
     for (int i = 1; i <= 20; i++)
     {
 
-        float fx = (*funcVlaue)(X);
+        float fx = (*funcValue)(X);
         float dfx = (*derivativeValue)(X);
         
         Xn = X - fx / dfx;

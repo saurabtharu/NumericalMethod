@@ -107,7 +107,7 @@ int main(){
 
     choiceMenu(&choice);
 
-    float (*funcVlaue)(float) = function(choice);
+    float (*funcValue)(float) = function(choice);
     float Xn; // Xn is assumed to be X(n+1)
     float e,Xnew,Xold,X;
 
@@ -128,7 +128,7 @@ int main(){
     for (int i = 1; i <= 20; i++)
     {
 
-		Xn = (*funcVlaue)(X);
+		Xn = (*funcValue)(X);
 		Xnew = Xn;
 		Xold = X;
         e = error(Xnew, Xold);

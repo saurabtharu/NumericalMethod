@@ -126,7 +126,7 @@ int main(){
 
     choiceMenu(&choice);
 
-    float (*funcVlaue)(float) = function(choice);
+    float (*funcValue)(float) = function(choice);
 
     float Xold = 0, Xnew;
     float XnMinus1, Xn, XnPlus1;
@@ -156,12 +156,12 @@ int main(){
     for (int i = 1; i <= 20; i++)
     {
 
-        float fXnMinus1 = (*funcVlaue)(XnMinus1);
-        float fXn = (*funcVlaue)(Xn);
+        float fXnMinus1 = (*funcValue)(XnMinus1);
+        float fXn = (*funcValue)(Xn);
 
         XnPlus1 = Xn - (Xn - XnMinus1) * fXn / (fXn - fXnMinus1);
 
-        float fXnPlus1 = (*funcVlaue)(XnPlus1);
+        float fXnPlus1 = (*funcValue)(XnPlus1);
 
         Xold = Xn;
         Xnew = XnPlus1;
