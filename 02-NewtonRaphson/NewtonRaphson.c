@@ -32,50 +32,51 @@ float Power(float base, float power){
 }
 
 //==============================| 2 * x^3 - 5 |==================================================
-float polynomialEqn(float x){
+float func1(float x){
     return 2 * Power(x, 3) - 5;
 }
-float polynomialEqnDerivative(float x){
+float func1Derivative(float x){
     return 6 * Power(x, 2);
-}
-//===============================| sin(x) + 5 * x - 3 |============================================
-float sineFunction(float x){
-    return sin(x) + 5 * x - 3;
-}
-
-float sineFunctionDerivative(float x){
-    return cos(x) + 5;
 }
 
 //===============================| cos(x) + 5 * x * x - 3 * x - 5 |=================================
 
 
-float cosineFunction(float x){
+float func2(float x){
     return cos(x) + 5 * Power(x, 2) - 3 * x - 5;
 }
 
-float cosineFunctionDerivative(float x){
+float func2Derivative(float x){
     return -sin(x) + 10 * x - 3;
+}
+
+//===============================| sin(x) + 5 * x - 3 |============================================
+float func3(float x){
+    return sin(x) + 5 * x - 3;
+}
+
+float func3Derivative(float x){
+    return cos(x) + 5;
 }
 
 //===============================| ln(x) + 6 * x - 5 |===============================================
 
-float logarithmicEqn(float x)
+float func4(float x)
 {
     return log(x) + 6 * x - 5;             
 
 }
 
-float logarithmicEqnDerivative(float x){
+float func4Derivative(float x){
     return 1 / x + 6;
 }
 
 //===============================| e^-x -5 |=========================================================
-float expoEqn(float x){
+float func5(float x){
     return exp(-x) - 5;                     
 }
 
-float expoEqnDerivative(float x){
+float func5Derivative(float x){
     return -exp(-x);
 }
 
@@ -85,15 +86,15 @@ float  (* function(int choice))(float)
 {
     
     if (choice  == 1)
-        return &polynomialEqn;
+        return &func1;
     else if(choice == 2)
-        return &cosineFunction;
+        return &func2;
     else if (choice == 3)
-        return &sineFunction;
+        return &func3;
     else if(choice==4)
-        return &logarithmicEqn;
+        return &func4;
     else
-        return &expoEqn;
+        return &func5;
 
 }
 
@@ -101,15 +102,15 @@ float (* functionDerivative(int choice))(float)
 {
     
     if (choice  == 1)
-        return &polynomialEqnDerivative;
+        return &func1Derivative;
     else if(choice == 2)
-        return &cosineFunctionDerivative;
+        return &func2Derivative;
     else if (choice == 3)
-        return &sineFunctionDerivative;
+        return &func3Derivative;
     else if(choice==4)
-        return &logarithmicEqnDerivative;
+        return &func4Derivative;
     else if(choice == 5)
-        return &expoEqnDerivative;
+        return &func5Derivative;
     else{
         printf("Wrong input!!!\n");
         exit(0);
