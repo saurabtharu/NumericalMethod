@@ -1,15 +1,15 @@
+//WAP to implement Lagrange Interpolation
+
 #include<stdio.h>
 #define MAX 10
 
-float lagrangeMethod(float *xArr,float *yArr, int n, float x){
+float lagrangeMethod(float *xArr,float *yArr, int n, float x) {
 	float sum = 0;
 	float mult;
 
-	for (int i = 0; i < n; i++)
-	{ 
+	for (int i = 0; i < n; i++) { 
 		mult=1.0;
-		for(int j = 0; j< n; j++)
-		{ 
+		for(int j = 0; j< n; j++) { 
 			if(i!=j)
 				mult = mult * (x - *(xArr+j)) / (*(xArr+i) - *(xArr+j));
 		}
@@ -18,8 +18,7 @@ float lagrangeMethod(float *xArr,float *yArr, int n, float x){
 	return sum;
 }
 
-int main()
-{
+int main() {
 	int n;
 	float x1, y1;
 
@@ -32,8 +31,7 @@ int main()
 	printf("Enter the values of x and y\n");
 	printf("x | y\n");
 
-	for (int i = 0; i < n; i++)
-	{
+	for (int i = 0; i < n; i++) {
 		scanf("%f	%f", &x[i], &y[i]);
 	}
 
@@ -44,3 +42,23 @@ int main()
 
 	printf("y= %.4f\n", y1);
 }
+
+
+/*
+
+
+Enter the number of degrees:   4
+Enter the values of x and y
+x | y
+5 12
+6 13
+9 14
+11 16
+Enter x where the interpolation is required: 10
+y= 14.6667
+
+
+
+
+*/
+
