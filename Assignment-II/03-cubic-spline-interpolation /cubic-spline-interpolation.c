@@ -9,11 +9,6 @@ void input_value(float *x, float *f,int n) {
 	for (int i = 0; i < n; i++) {
 		scanf("%f %f", (x + i),&f[i]);
 	}
-    // printf("\n\n");
-    // for (int i = 0; i < n; i++)
-    // {
-    //     printf("%f %f\n", *(x + i),f[i]);
-    // }
 }
 
 void findU(float *u,float *x,int val,int n)
@@ -89,8 +84,6 @@ int main() {
 	findA(a,f,h,n);
 	findS(s,a,h,u,x,f,val,n);
 
-	// calculation(x, fx, n,val);
-
 }
 
 /*
@@ -114,48 +107,3 @@ S[1] = 2.62286
 s 2.62286% 
 */
 
-
-
-/* 
-
-
-Enter the number of data points: 3
-Enter the value of x and fx: 
-x   fx
-4   2
-9   3
-16  4
-Enter the value to be interpolted: 7
-
- U[0] = 3.000
-
- U[1] = -2.000
-
- U[2] = -9.000
-
- H[1] = 5.000
-
- H[2] = 7.000
-
- A[1] = -2.681
-
- S[1] = 0.483
-
- S[2] = 7.000
-Value at 7 using Cubic Splines Interpolation is 0.483460
-
-
-
-*/
-
-
-/*
-
-
-
-*/
-
-/*
-
-
-*/

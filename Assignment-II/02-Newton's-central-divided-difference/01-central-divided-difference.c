@@ -75,19 +75,6 @@ int main() {
 	calculation(x, fx, n, val);
 }
 
-/*
-
-void printElements(int x[10], int fx[][10],int n){ 
-
-	printf("x 	fx\n");
-	for (int i = 0; i < n; i++) {
-		printf("%d \t %d\n", *(x + i), *(*(fx + 0) + i));
-	}
-}
-
-*/
-
-
 
 /* 
 
