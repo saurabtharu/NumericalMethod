@@ -107,6 +107,17 @@
 	 	 * makefile
 	 	 * shooting-method
 	 	 * shooting-method.c
+* Assignment-VI
+	 * 01-Laplacian-equation
+	 	 * Laplacian-equation
+	 	 * Laplacian-equation.c
+	 	 * makefile
+	 * 02-Poissons-equation
+	     * makefile
+	     * Poissons-equation
+	     * Poissons-equation.c
+
 * README.md
+
 
 28 directories, 80 files
